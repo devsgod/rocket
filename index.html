@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chinese New Year</title>
+</head>
+<link rel="stylesheet" href="./assets/css/app.css">
+<link rel="stylesheet" href="./assets/css/card.css">
+
+<body>
+    <img src="assets/img/background.png" class="img-background">
+    <img src="assets/img/back_outline.png" class="img-back-outline">
+
+    <div>
+        <canvas id="body" width="1000" height="937" style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
+        <div id="body_card" class="card" style="position: absolute; ">
+            <div class="card-title">
+                Korper
+            </div>
+            <div class="card-body">
+                <div style="display: flex;">
+                    <!-- <img src="assets/img/Source/head.png" class="card-body-item" name="head"> -->
+                    <!-- <img src="assets/img/Source/face.png" class="card-body-item" name="face"> -->
+                </div>
+                <div style="display: flex;">
+                    <!-- <img src="assets/img/Source/neck.png" class="card-body-item" name="neck"> -->
+                    <img src="assets/img/Source/body.png" class="card-body-item" name="body">
+                </div>
+                <div>
+                    <input type="button" id="body_next" value="Next" class="btn-next">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <canvas id="head" width="1000" height="937" style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
+        <div id="head_card" class="card" style="position: absolute; ">
+            <div class="card-title">
+                Deckel
+            </div>
+            <div class="card-body">
+                <div style="display: flex;">
+                    <img src="assets/img/Source/head.png" class="card-body-item" name="head">
+                    <!-- <img src="assets/img/Source/face.png" class="card-body-item" name="face"> -->
+                </div>
+                <div style="display: flex;">
+                    <!-- <img src="assets/img/Source/neck.png" class="card-body-item" name="neck"> -->
+                    <!-- <img src="assets/img/Source/body.png" class="card-body-item" name="body"> -->
+                </div>
+                <div>
+                    <input type="button" id="head_next" value="Next" class="btn-next">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <canvas id="face" width="1000" height="937" style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
+        <div id="face_card" class="card" style="position: absolute; ">
+            <div class="card-title">
+                Accessories
+            </div>
+            <div class="card-body">
+                <div style="display: flex;">
+                    <!-- <img src="assets/img/Source/head.png" class="card-body-item" name="head"> -->
+                    <img src="assets/img/Source/face.png" class="card-body-item" name="face">
+                </div>
+                <div style="display: flex;">
+                    <!-- <img src="assets/img/Source/neck.png" class="card-body-item" name="neck"> -->
+                    <!-- <img src="assets/img/Source/body.png" class="card-body-item" name="body"> -->
+                </div>
+                <div>
+                    <input type="button" value="Next" id="face_next" class="btn-next">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <canvas id="neck" width="1000" height="937" style="position: absolute; left: 0; top: 0; z-index: 3;"></canvas>
+        <div id="neck_card" class="card" style="position: absolute; ">
+            <div class="card-title">
+                Dusen
+            </div>
+            <div class="card-body">
+                <div style="display: flex;">
+                    <!-- <img src="assets/img/Source/head.png" class="card-body-item" name="head"> -->
+                    <!-- <img src="assets/img/Source/face.png" class="card-body-item" name="face"> -->
+                </div>
+                <div style="display: flex;">
+                    <img src="assets/img/Source/neck.png" class="card-body-item" name="neck">
+                    <!-- <img src="assets/img/Source/body.png" class="card-body-item" name="body"> -->
+                </div>
+                <div>
+                    <input type="button" value="Next" id="neck_next" class="btn-next">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="./assets/js/canvas/head.js"></script>
+<script src="./assets/js/canvas/face.js"></script>
+<script src="./assets/js/canvas/neck.js"></script>
+<script src="./assets/js/canvas/body.js"></script>
+<script src="./assets/js/app.js"></script>
+
+</html>
