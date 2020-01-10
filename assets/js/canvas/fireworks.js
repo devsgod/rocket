@@ -102,7 +102,13 @@ fscreen.addEventListener('fullscreenchange', () => {
     store.setState({ fullscreen: isFullscreen() });
 });
 
-var shellType_config = localStorage.getItem("shell-type");
+
+var shellType1_config = localStorage.getItem("shell-type1");
+var shellType2_config = localStorage.getItem("shell-type2");
+var shellType3_config = localStorage.getItem("shell-type3");
+var shellType4_config = localStorage.getItem("shell-type4");
+var shellType5_config = localStorage.getItem("shell-type5");
+
 
 // Simple state container; the source of truth.
 const store = {
@@ -122,7 +128,7 @@ const store = {
         // at render time, and parsing on change.
         config: {
             quality: String(IS_HIGH_END_DEVICE ? QUALITY_HIGH : QUALITY_NORMAL), // will be mirrored to a global variable named `quality` in `configDidUpdate`, for perf.
-            shell: shellType_config,
+            shell: "Random",
             size: IS_DESKTOP ?
                 '3' // Desktop default
                 :
@@ -751,13 +757,13 @@ const horsetailShell = (size = 1) => {
 };
 
 function randomShellName() {
-    return Math.random() < 0.5 ? 'Crysanthemum' : shellNames[(Math.random() * (shellNames.length - 1) + 1) | 0];
+    return Math.random() < 0.1 ? 'Crysanthemum' : shellNames[(Math.random() * (shellNames.length - 1) + 1) | 0];
 }
 
 function randomShell(size) {
     // Special selection for codepen header.
     if (IS_HEADER) return randomFastShell()(size);
-    // Normal operation
+    // // Normal operation
     return shellTypes[randomShellName()](size);
 }
 
@@ -781,20 +787,53 @@ function randomFastShell() {
     return shellTypes[shellName];
 }
 
+function shellSeclete(shellTypeName) {
+    if (shellTypeName == 'Crackle') {
+        return crackleShell;
+    }
+    if (shellTypeName == 'Crossette') {
+        return crossetteShell;
+    }
+    if (shellTypeName == 'Crysanthemum') {
+        return crysanthemumShell;
+    }
+    if (shellTypeName == 'Falling Leaves') {
+        return fallingLeavesShell;
+    }
+    if (shellTypeName == 'Floral') {
+        return floralShell;
+    }
+    if (shellTypeName == 'Ghost') {
+        return ghostShell;
+    }
+    if (shellTypeName == 'Horse Tail') {
+        return horsetailShell;
+    }
+    if (shellTypeName == 'Palm') {
+        return palmShell;
+    }
+    if (shellTypeName == 'Strobe') {
+        return strobeShell;
+    }
+    if (shellTypeName == 'Willow') {
+        return willowShell;
+    }
+    return randomShell;
+}
 
 const shellTypes = {
     'Random': randomShell,
-    'Crackle': crackleShell,
-    'Crossette': crossetteShell,
-    'Crysanthemum': crysanthemumShell,
-    'Falling Leaves': fallingLeavesShell,
-    'Floral': floralShell,
-    'Ghost': ghostShell,
-    'Horse Tail': horsetailShell,
-    'Palm': palmShell,
-    'Ring': ringShell,
-    'Strobe': strobeShell,
-    'Willow': willowShell
+    'Crackle': shellSeclete(shellType1_config),
+    'Crossette': shellSeclete(shellType2_config),
+    'Crysanthemum': shellSeclete(shellType3_config),
+    'Falling Leaves': shellSeclete(shellType4_config),
+    'Floral': shellSeclete(shellType5_config),
+    // 'Ghost': ghostShell,
+    // 'Horse Tail': horsetailShell,
+    // 'Palm': palmShell,
+    // 'Ring': ringShell,
+    // 'Strobe': strobeShell,
+    // 'Willow': willowShell
 };
 
 const shellNames = Object.keys(shellTypes);
