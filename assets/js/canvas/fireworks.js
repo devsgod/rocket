@@ -1779,7 +1779,7 @@ class Shell {
         let color, onDeath, sparkFreq, sparkSpeed, sparkLife;
         let sparkLifeVariation = 0.25;
         // Some death effects, like crackle, play a sound, but should only be played once.
-        let playedDeathSound = false;
+        let playedDeathSound = true;
 
         if (this.crossette) onDeath = (star) => {
             if (!playedDeathSound) {
