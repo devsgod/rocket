@@ -19,6 +19,14 @@ body {
     display: none;
 }
 
+#fireworks_card {
+    display: none;
+}
+
+#fireworks {
+    display: none;
+}
+
 .img-background {
     position: absolute;
     background-size: auto;

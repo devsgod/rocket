@@ -22,8 +22,8 @@ const IS_HIGH_END_DEVICE = (() => {
 })();
 // Prevent canvases from getting too large on ridiculous screen sizes.
 // 8K - can restrict this if needed
-const MAX_WIDTH = 7680;
-const MAX_HEIGHT = 4320;
+const MAX_WIDTH = 3940;
+const MAX_HEIGHT = 2160;
 const GRAVITY = 1; // Acceleration in px/s
 let simSpeed = 1;
 
@@ -102,6 +102,8 @@ fscreen.addEventListener('fullscreenchange', () => {
     store.setState({ fullscreen: isFullscreen() });
 });
 
+var shellType_config = localStorage.getItem("shell-type");
+
 // Simple state container; the source of truth.
 const store = {
     _listeners: new Set(),
@@ -120,7 +122,7 @@ const store = {
         // at render time, and parsing on change.
         config: {
             quality: String(IS_HIGH_END_DEVICE ? QUALITY_HIGH : QUALITY_NORMAL), // will be mirrored to a global variable named `quality` in `configDidUpdate`, for perf.
-            shell: 'Random',
+            shell: shellType_config,
             size: IS_DESKTOP ?
                 '3' // Desktop default
                 :
@@ -234,19 +236,19 @@ function togglePause(toggle) {
 }
 
 function toggleSound(toggle) {
-    if (typeof toggle === 'boolean') {
-        store.setState({ soundEnabled: toggle });
-    } else {
-        store.setState({ soundEnabled: !store.state.soundEnabled });
-    }
+    // if (typeof toggle === 'boolean') {
+    //     store.setState({ soundEnabled: toggle });
+    // } else {
+    //     store.setState({ soundEnabled: !store.state.soundEnabled });
+    // }
 }
 
 function toggleMenu(toggle) {
-    if (typeof toggle === 'boolean') {
-        store.setState({ menuOpen: toggle });
-    } else {
-        store.setState({ menuOpen: !store.state.menuOpen });
-    }
+    // if (typeof toggle === 'boolean') {
+    //     store.setState({ menuOpen: toggle });
+    // } else {
+    //     store.setState({ menuOpen: !store.state.menuOpen });
+    // }
 }
 
 function updateConfig(nextConfig) {
@@ -418,6 +420,7 @@ function renderApp(state) {
 
     appNodes.quality.value = state.config.quality;
     appNodes.shellType.value = state.config.shell;
+    console.log(appNodes.shellType.value);
     appNodes.shellSize.value = state.config.size;
     appNodes.autoLaunch.checked = state.config.autoLaunch;
     appNodes.finaleMode.checked = state.config.finale;
@@ -795,6 +798,7 @@ const shellTypes = {
 };
 
 const shellNames = Object.keys(shellTypes);
+console.log(shellNames);
 
 function init() {
     // Remove loading state
@@ -1071,9 +1075,9 @@ function startSequence() {
         if (IS_HEADER) {
             return seqTwoRandom();
         } else {
-            const shell = new Shell(crysanthemumShell(shellSizeSelector()));
-            shell.launch(0.5, 0.5);
-            return 2400;
+            // const shell = new Shell(ringShell(shellSizeSelector()));
+            // shell.launch(0.5, 0.5);
+            return 240;
         }
     }
 
@@ -1446,6 +1450,7 @@ function render(speed) {
 
 // Draw colored overlay based on combined brightness of stars (light up the sky!)
 // Note: this is applied to the canvas container's background-color, so it's behind the particles
+
 const currentSkyColor = { r: 0, g: 0, b: 0 };
 const targetSkyColor = { r: 0, g: 0, b: 0 };
 
@@ -1487,6 +1492,8 @@ function colorSky(speed) {
     currentSkyColor.b += (targetSkyColor.b - currentSkyColor.b) / colorChange * speed;
 
     appNodes.canvasContainer.style.backgroundColor = `rgb(${currentSkyColor.r | 0}, ${currentSkyColor.g | 0}, ${currentSkyColor.b | 0})`;
+    appNodes.canvasContainer.style.opacity = 0.5;
+    // appNodes.canvasContainer.style.backgroundColor = 'transparent';
 }
 
 mainStage.addEventListener('ticker', update);
