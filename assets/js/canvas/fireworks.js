@@ -820,7 +820,11 @@ function shellSeclete(shellTypeName) {
     }
     return randomShell;
 }
-
+console.log(shellType1_config);
+console.log(shellType2_config);
+console.log(shellType3_config);
+console.log(shellType4_config);
+console.log(shellType5_config);
 const shellTypes = {
     'Random': randomShell,
     'Crackle': shellSeclete(shellType1_config),

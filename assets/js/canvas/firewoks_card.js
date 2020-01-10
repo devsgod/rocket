@@ -1,5 +1,11 @@
 var neckpic_item;
 var i = 0;
+localStorage.setItem("shell-type1", "");
+localStorage.setItem("shell-type2", "");
+localStorage.setItem("shell-type3", "");
+localStorage.setItem("shell-type4", "");
+localStorage.setItem("shell-type5", "");
+
 $(document).ready(function() {
     $('#fireworks_card').on('click', 'img', function() {
         console.log("fireworks_card");
